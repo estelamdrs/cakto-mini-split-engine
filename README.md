@@ -14,7 +14,7 @@ API de pagamentos focada em split de recebíveis, cálculo de taxas e garantia d
 1. **Clone o repositório:**
 
    ```
-   git clone <VOU COLOCAR O LINK AQUI>
+   git clone https://github.com/estelamdrs/cakto-mini-split-engine.git
    cd cakto-mini-split-engine
    ```
 
