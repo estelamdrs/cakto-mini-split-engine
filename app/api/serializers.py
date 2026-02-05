@@ -14,7 +14,7 @@ class SplitInputSerializer(serializers.Serializer):
         max_value=100.00
     )
 
-class PaymentInputSerializers(serializers.Serializer):
+class PaymentInputSerializer(serializers.Serializer):
     amount = serializers.DecimalField(
         max_digits=12,
         decimal_places=2,
