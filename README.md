@@ -39,7 +39,7 @@ A API estará disponível para o teste em [POST] http://localhost:8000/api/v1/pa
 Para garantir um ambiente isolado e evitar conflitos de dependências, recomenda-se rodar os testes dentro do container Docker:
 
 1. Certifique-se que o projeto está rodando (passo anterior).
-2. Em um novo terminal, execute:
+2. Em um novo terminal, acesse o diretório do repositório e execute:
 
    ```
    docker-compose exec web python manage.py test
