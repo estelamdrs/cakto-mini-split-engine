@@ -32,7 +32,7 @@ Este comando irá construir a imagem, aguardar o banco de dados, rodar as migra�
 
     docker-compose up --build
 
-A API estará disponível em: http://localhost:8000/api/v1/payments
+A API estará disponível para o teste em [POST] http://localhost:8000/api/v1/payments
 
 ## **🧪 Rodando os Testes**
 
