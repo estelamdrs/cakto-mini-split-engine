@@ -91,7 +91,9 @@ class PaymentCreateView(APIView):
 
                 output_payload = PaymentOutputSerializer(payment).data
 
-                output_payload['receivables'] = calculation_result['receivables']
+                output_serializer = PaymentOutputSerializer(payment)
+
+                output_payload = output_serializer.data
 
                 outbox_event = OutboxEvent.objects.create(
                     event_type='payment_captured',

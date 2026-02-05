@@ -5,7 +5,7 @@ from decimal import Decimal
 
 class Payment(models.Model):
     class Status(models.TextChoices):
-        CAPTURED = 'capture', _('Captured')
+        CAPTURED = 'captured', _('Captured')
         FAILED = 'failed', _('Failed')
     
     class Method(models.TextChoices):

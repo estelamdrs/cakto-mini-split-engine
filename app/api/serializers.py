@@ -10,15 +10,15 @@ class SplitInputSerializer(serializers.Serializer):
     percent = serializers.DecimalField(
         max_digits=5,
         decimal_places=2,
-        min_value=0.01,
-        max_value=100.00
+        min_value=Decimal('0.01'),
+        max_value=Decimal('100.00')
     )
 
 class PaymentInputSerializer(serializers.Serializer):
     amount = serializers.DecimalField(
         max_digits=12,
         decimal_places=2,
-        min_value=0.01
+        min_value=Decimal('0.01')
     )
     currency = serializers.CharField(max_length=3)
     payment_method = serializers.ChoiceField(choices=Payment.Method.choices)
