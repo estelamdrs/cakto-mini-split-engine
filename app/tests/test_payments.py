@@ -103,8 +103,23 @@ class PaymentIntegrationTests(APITestCase):
         self.client.post(self.url, self.valid_payload, format='json', **self.headers)
 
         payload_fake = self.valid_payload.copy()
+        
         payload_fake['amount'] = "500.00"
 
         response = self.client.post(self.url, payload_fake, format='json', **self.headers)
 
         self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
+
+    def test_validation_split_sum(self):
+        payload = self.valid_payload.copy()
+
+        payload['splits'] = [
+            { "recipient_id": "a", "role": "p", "percent": 50 },
+            { "recipient_id": "b", "role": "a", "percent": 40 } # Soma 90
+        ]
+
+        response = self.client.post(self.url, payload, format='json', **self.headers)
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+        self.assertTrue("100%" in str(response.data) or "soma" in str(response.data))
