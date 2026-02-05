@@ -16,6 +16,26 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  web:
+    build: .
+    container_name: cakto_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
 
 volumes:
   mysql_data:
